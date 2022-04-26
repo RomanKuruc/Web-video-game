@@ -1,0 +1,86 @@
+html,
+body {
+  background-color: rgb(200, 219, 184);
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+canvas {
+  border: 10px solid rgb(88, 105, 68);
+}
+
+h1 {
+  margin-top: 0;
+  font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
+    sans-serif, cursive;
+  margin-bottom: 10rem;
+}
+
+.button,
+.right-col {
+  font-size: 30px;
+  font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
+    sans-serif, cursive;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.FlexBox {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.canvaso {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+
+.back {
+  font-size: 15px;
+  font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
+    sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.FlexBox2 {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  margin-top: 480px;
+  margin-right: 420px;
+}
+
+.score {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.timer {
+  text-align: center;
+  font-size: 25px;
+  font-family: "Comic Sans MS", "Comic Sans";
+}
+
+.audio {
+  display: flex;
+  margin-right: 6%;
+  justify-content: center;
+}
+
+.audio-picture {
+  cursor: pointer;
+  margin-left: 10px;
+  height: 70%;
+  margin-top: 8px;
+}

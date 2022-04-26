@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <script></script>
+    <title>web-game</title>
+  </head>
+  <body>
+    <!-- MAIN MENU -->
+
+    <div class="canvaso" id="main-menu">
+      <div class="FlexBox">
+        <a class="button" id="select-difficulty">SELECT DIFFICULTY</a>
+        <a class="button" id="settings">SETTINGS</a>
+        <a class="button" id="control">CONTROL</a>
+        <a class="button" id="credits">CREDITS</a>
+      </div>
+      <canvas width="500" height="500" id="main-menu-canvas"></canvas>
+    </div>
+    <script src="../js/main-menu.js"></script>
+
+    <!-- DIFFICULTY -->
+
+    <div class="canvaso">
+      <div class="FlexBox">
+        <a class="button" id="easy" hidden>EASY</a>
+        <a class="button" id="medium" hidden>MEDIUM</a>
+        <a class="button" id="hard" hidden>HARD</a>
+        <a class="button" id="difficulty-back" hidden>BACK</a>
+      </div>
+      <canvas width="500" height="500" id="difficulty-canvas" hidden></canvas>
+    </div>
+    <body>
+      <script src="../js/difficulty.js"></script>
+
+      <!-- SETTINGS  -->
+
+      <div class="canvaso" id="settings-canvas-menu">
+        <div class="FlexBox">
+          <div class="audio">
+            <div class="right-col" id="audio" hidden>AUDIO</div>
+            <img
+              class="audio-picture"
+              src="../pictures, audio/sound-on.png"
+              id="icon"
+              hidden
+            />
+          </div>
+          <a class="button" id="back-settings" hidden>BACK</a>
+        </div>
+        <canvas width="500" height="500" id="settings-canvas" hidden></canvas>
+      </div>
+      <audio id="mySong" onloadeddata="setHalfVolume()">
+        <source src="../pictures, audio/background-song.mp3" type="audio/mp3" />
+      </audio>
+      <script src="../js/settings.js"></script>
+
+      <!-- CONTROL -->
+
+      <div class="canvaso">
+        <div class="FlexBox2">
+          <a class="back" id="control-back" hidden>BACK</a>
+        </div>
+        <canvas width="500" height="500" id="control-canvas" hidden></canvas>
+      </div>
+      <script src="../js/control.js"></script>
+
+      <!-- CREDITS -->
+
+      <div class="canvaso">
+        <div class="FlexBox2">
+          <a class="back" id="credits-back" hidden>BACK</a>
+        </div>
+        <canvas width="500" height="500" id="credits-canvas" hidden></canvas>
+      </div>
+      <script src="../js/credits.js"></script>
+
+      <!-- EASY GAME -->
+
+      <canvas id="canvas-easy" width="500" height="500" hidden></canvas>
+      <div class="score">
+        <h1 id="easy-score" hidden>Score: 0</h1>
+      </div>
+
+      <script src="../js/easy.js"></script>
+
+      <!-- MEDIUM GAME -->
+
+      <canvas id="canvas-medium" width="500" height="500" hidden></canvas>
+      <h1 id="scoreMedium" hidden>Score: 0</h1>
+      <script src="../js/medium.js"></script>
+
+      <!-- HARD -->
+
+      <canvas id="canvas-hard" width="500" height="500" hidden></canvas>
+      <h1 id="scoreHard" hidden>Score: 0</h1>
+      <script src="../js/hard.js"></script>
+    </body>
+  </body>
+</html>
