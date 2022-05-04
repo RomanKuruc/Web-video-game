@@ -1,3 +1,24 @@
+document.getElementById("hard-back").addEventListener(
+  "click",
+  function () {
+    setTimeout(function () {
+      document.getElementById("canvas-hard").hidden = true;
+      document.getElementById("settings").hidden = false;
+      document.getElementById("difficulty-canvas").hidden = false;
+      document.getElementById("easy").hidden = false;
+      document.getElementById("medium").hidden = false;
+      document.getElementById("hard").hidden = false;
+      document.getElementById("difficulty-back").hidden = false;
+      document.getElementById("scoreHard").hidden = true;
+      document.getElementById("hard-back").hidden = true;
+      document.getElementById("levelOneHard").hidden = true;
+      document.getElementById("levelTwoHard").hidden = true;
+      document.getElementById("levelThreeHard").hidden = true;
+    });
+  },
+  false
+);
+
 document.addEventListener("keydown", keyPushHard);
 const canvasHard = document.querySelector("#canvas-hard");
         const titleHard = document.querySelector("#scoreHard");
@@ -11,6 +32,7 @@ const canvasHard = document.querySelector("#canvas-hard");
         const titlecountXHard = canvasHard.width / titleSizeHard;
         const titlecountYHard = canvasHard.height / titleSizeHard;
         const fpsHard = 30;
+        let currentHardScore = 0;
         let scoreHard = 0;
 
         /*
@@ -91,7 +113,20 @@ const canvasHard = document.querySelector("#canvas-hard");
           ) {
             scoreHard++;
             snakeLenghtHard++;
-            titleHard.textContent = scoreHard * 2.5;
+            currentHardScore = scoreHard * 10;
+            titleHard.textContent = currentHardScore;
+
+            if(currentHardScore >= 80){
+              document.getElementById("levelOneHard").hidden = true;
+              document.getElementById("levelTwoHard").hidden = false;
+              fps = 35;
+            }
+            if (currentHardScore >= 160) {
+              document.getElementById("levelOneHard").hidden = true;
+              document.getElementById("levelTwoHard").hidden = true;
+              document.getElementById("levelThreeHard").hidden = false;
+              fps = 40;
+            }
             randomFoodHard();
           }
         }
@@ -175,7 +210,7 @@ const canvasHard = document.querySelector("#canvas-hard");
         //GAME OVER
         //KEYBOARD RESTARTS GAME
         function gameOverHard() {
-          titleHard.innerHTML = `<strong> ${scoreHard * 2.5} </strong>`;
+          titleHard.innerHTML = `<strong> ${currentHardScore} </strong>`;
           gameIsRunningHard = false;
         }
 
@@ -281,5 +316,6 @@ const canvasHard = document.querySelector("#canvas-hard");
             }
           }
         }
+
         
 

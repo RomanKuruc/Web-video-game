@@ -79,24 +79,46 @@
       <script src="../js/credits.js"></script>
 
       <!-- EASY GAME -->
-
+      <div>
+        <p class="level" id="levelOne" hidden>Level 1</p>
+        <p class="level" id="levelTwo" hidden>Level 2</p>
+        <p class="level" id="levelThree" hidden>Level 3</p>
+      </div>
       <canvas id="canvas-easy" width="500" height="500" hidden></canvas>
-      <div class="score">
-        <h1 id="easy-score" hidden>Score: 0</h1>
+      <div class="atTheBottomOfTheCanvas">
+        <a class="backDifficulty" id="easy-back" hidden>BACK</a>
+        <p class="merescore" id="easy-score" hidden>Score: 0</p>
       </div>
 
       <script src="../js/easy.js"></script>
 
       <!-- MEDIUM GAME -->
-
+      <div class="level-back-text">
+        <p class="level" id="levelOneMedium" hidden>Level 1</p>
+        <p class="level" id="levelTwoMedium" hidden>Level 2</p>
+        <p class="level" id="levelThreeMedium" hidden>Level 3</p>
+      </div>
       <canvas id="canvas-medium" width="500" height="500" hidden></canvas>
-      <h1 id="scoreMedium" hidden>Score: 0</h1>
+      <div class="atTheBottomOfTheCanvas">
+        <a class="backDifficulty" id="medium-back" hidden>BACK</a>
+        <h1 id="scoreMedium" hidden>Score: 0</h1>
+      </div>
+
       <script src="../js/medium.js"></script>
 
       <!-- HARD -->
 
+      <div class="level-back-text">
+        <p class="level" id="levelOneHard" hidden>Level 1</p>
+        <p class="level" id="levelTwoHard" hidden>Level 2</p>
+        <p class="level" id="levelThreeHard" hidden>Level 3</p>
+      </div>
       <canvas id="canvas-hard" width="500" height="500" hidden></canvas>
-      <h1 id="scoreHard" hidden>Score: 0</h1>
+      <div class="atTheBottomOfTheCanvas">
+        <a class="backDifficulty" id="hard-back" hidden>BACK</a>
+        <h1 id="scoreHard" hidden>Score: 0</h1>
+      </div>
+
       <script src="../js/hard.js"></script>
     </body>
   </body>

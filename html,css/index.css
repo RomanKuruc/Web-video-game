@@ -46,7 +46,16 @@ h1 {
 .back {
   font-size: 15px;
   font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
-    sans-serif;
+  sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.backDifficulty {
+  font-size: 15px;
+  font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
+  sans-serif;
   text-decoration: none;
   cursor: pointer;
 }
@@ -83,4 +92,21 @@ h1 {
   margin-left: 10px;
   height: 70%;
   margin-top: 8px;
+}
+
+.level {
+  font-family: "Comic Sans MS", "Comic Sans";
+  font-size: 30px;
+}
+
+.atTheBottomOfTheCanvas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.merescore {
+  font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
+    sans-serif, cursive;
+    justify-self: center;
 }

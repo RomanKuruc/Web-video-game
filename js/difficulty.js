@@ -31,6 +31,8 @@ document.getElementById("easy").addEventListener(
       document.getElementById("hard").hidden = true;
       document.getElementById("difficulty-back").hidden = true;
       document.getElementById("easy-score").hidden = false;
+      document.getElementById("easy-back").hidden = false;
+      document.getElementById("levelOne").hidden = false;
     });
   },
   false
@@ -49,6 +51,8 @@ document.getElementById("medium").addEventListener(
       document.getElementById("hard").hidden = true;
       document.getElementById("difficulty-back").hidden = true;
       document.getElementById("scoreMedium").hidden = false;
+      document.getElementById("medium-back").hidden = false;
+      document.getElementById("levelOneMedium").hidden = false;
     });
   },
   false
@@ -67,6 +71,8 @@ document.getElementById("hard").addEventListener(
       document.getElementById("hard").hidden = true;
       document.getElementById("difficulty-back").hidden = true;
       document.getElementById("scoreHard").hidden = false;
+      document.getElementById("hard-back").hidden = false;
+      document.getElementById("levelOneHard").hidden = false;
     });
   },
   false
