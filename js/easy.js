@@ -15,6 +15,8 @@ document.getElementById("easy-back").addEventListener(
       document.getElementById("levelOne").hidden = true;
       document.getElementById("levelTwo").hidden = true;
       document.getElementById("levelThree").hidden = true;
+      document.getElementById("GameOverCanvas").hidden = true;
+      location.reload();
     });
   },
   false
@@ -211,8 +213,18 @@ function randomFood() {
 //GAME OVER
 //KEYBOARD RESTARTS GAME
 function gameOver() {
-  title.innerHTML = `<strong> SCORE: ${currentScore} </strong>`;
+  title.innerHTML = `<strong>YOUR SCORE IS: ${currentScore} </strong>`;
   gameIsRunning = false;
+
+
+  //this piece of code hides gameplay canvas and shows gameover canvas
+  document.getElementById("levelOne").hidden = true;
+  document.getElementById("levelTwo").hidden = true;
+  document.getElementById("levelThree").hidden = true;
+  document.getElementById("canvas-easy").hidden = true;
+  document.getElementById("easy-score").hidden = false;
+
+  document.getElementById("GameOverCanvas").hidden = false;
 }
 
 
@@ -317,4 +329,8 @@ function grid() {
       );
     }
   }
+}
+
+if(document.getElementById("canvas-easy").hidden = true) {
+  !gameIsRunning;
 }

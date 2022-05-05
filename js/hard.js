@@ -14,6 +14,9 @@ document.getElementById("hard-back").addEventListener(
       document.getElementById("levelOneHard").hidden = true;
       document.getElementById("levelTwoHard").hidden = true;
       document.getElementById("levelThreeHard").hidden = true;
+      document.getElementById("GameOverCanvas").hidden = true;
+      document.getElementById("GameOverCanvasMed").hidden = true;
+      location.reload();
     });
   },
   false
@@ -203,15 +206,24 @@ const canvasHard = document.querySelector("#canvas-hard");
                 snakePart.x === foodPosXHard && snakePart.y === foodPosYHard
             )
           ) {
-            resetFood();
+            randomFoodHard();
           }
         }
 
         //GAME OVER
         //KEYBOARD RESTARTS GAME
         function gameOverHard() {
-          titleHard.innerHTML = `<strong> ${currentHardScore} </strong>`;
+          titleHard.innerHTML = `<strong>YOUR SCORE IS: ${currentHardScore} </strong>`;
           gameIsRunningHard = false;
+
+          document.getElementById("canvas-hard").hidden = true;
+          document.getElementById("scoreHard").hidden = false;
+          document.getElementById("levelOneHard").hidden = true;
+          document.getElementById("levelTwoHard").hidden = true;
+          document.getElementById("levelThreeHard").hidden = true;
+          document.getElementById("GameOverCanvas").hidden = true;
+
+          document.getElementById("GameOverCanvasHard").hidden = false;
         }
 
         /*
@@ -317,5 +329,6 @@ const canvasHard = document.querySelector("#canvas-hard");
           }
         }
 
-        
-
+        if(document.getElementById("canvas-hard").hidden = true) {
+          !gameIsRunning;
+        }

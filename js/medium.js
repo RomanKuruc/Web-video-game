@@ -14,6 +14,8 @@ document.getElementById("medium-back").addEventListener(
       document.getElementById("levelOneMedium").hidden = true;
       document.getElementById("levelTwoMedium").hidden = true;
       document.getElementById("levelThreeMedium").hidden = true;
+      document.getElementById("GameOverCanvas").hidden = true;
+      location.reload();
     });
   },
   false
@@ -203,15 +205,25 @@ function randomFoodMedium() {
         snakePart.x === foodPosXMedium && snakePart.y === foodPosYMedium
     )
   ) {
-    resetFood();
+    randomFoodMedium();
   }
 }
 
 //GAME OVER
 //KEYBOARD RESTARTS GAME
 function gameOverMedium() {
-  titleMedium.innerHTML = `<strong> ${currentMediumScore} </strong>`;
+  titleMedium.innerHTML = `<strong>YOUR SCORE IS: ${currentMediumScore} </strong>`;
   gameIsRunningMedium = false;
+
+  //this piece of code hides gameplay canvas and shows gameover canvas
+  document.getElementById("canvas-medium").hidden = true;
+  document.getElementById("scoreMedium").hidden = false;
+  document.getElementById("levelOneMedium").hidden = true;
+  document.getElementById("levelTwoMedium").hidden = true;
+  document.getElementById("levelThreeMedium").hidden = true;
+  document.getElementById("GameOverCanvas").hidden = true;
+
+  document.getElementById("GameOverCanvasMed").hidden = false;
 }
 
 /*
@@ -315,5 +327,9 @@ function gridMedium() {
       );
     }
   }
+}
+
+if(document.getElementById("canvas-medium").hidden = true) {
+  !gameIsRunning;
 }
 
