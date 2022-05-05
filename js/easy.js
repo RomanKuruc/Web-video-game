@@ -211,7 +211,7 @@ function randomFood() {
 //GAME OVER
 //KEYBOARD RESTARTS GAME
 function gameOver() {
-  title.innerHTML = `<strong> ${currentScore} </strong>`;
+  title.innerHTML = `<strong> SCORE: ${currentScore} </strong>`;
   gameIsRunning = false;
 }
 

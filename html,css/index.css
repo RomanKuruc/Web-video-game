@@ -13,8 +13,7 @@ canvas {
 h1 {
   margin-top: 0;
   font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
-    sans-serif, cursive;
-  margin-bottom: 10rem;
+  sans-serif, cursive;
 }
 
 .button,
@@ -58,6 +57,8 @@ h1 {
   sans-serif;
   text-decoration: none;
   cursor: pointer;
+  position: absolute;
+  left: 30%;
 }
 
 .FlexBox2 {
@@ -102,11 +103,13 @@ h1 {
 .atTheBottomOfTheCanvas {
   display: flex;
   flex-direction: row;
+  position: relative;
   justify-content: space-evenly;
 }
 
-.merescore {
+.mereScore {
+  margin-top: -5px;
   font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, Tahoma,
-    sans-serif, cursive;
-    justify-self: center;
+  sans-serif, cursive;
+  font-size: 25px;
 }
