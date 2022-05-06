@@ -27,9 +27,7 @@ const canvas = document.querySelector("#canvas-easy");
 const title = document.querySelector("#easy-score");
 const easy = canvas.getContext("2d");
 
-/*
-    GAME
-  */
+/* GAME */
 let gameIsRunning = true;
 const titleSize = 25;
 const titlecountX = canvas.width / titleSize;
@@ -38,30 +36,22 @@ let score = 0;
 let currentScore = 0;
 let fps = 10;
 
-/*
-    PLAYER
-  */
+/* PLAYER */
 let snakeSpeed = titleSize;
 let snakePosX = 0;
 let snakePosY = canvas.height / 2;
 let velocityX = 1;
 let velocityY = 0;
 
-/*
-    TAIL
-  */
+/* TAIL */
 let tail = [];
 let snakeLenght = 1;
 
-/*
-    FOOD
-  */
+/* FOOD */
 let foodPosX = 0;
 let foodPosY = 0;
 
-/*
-    LOOP
-  */
+/* LOOP */
 function gameLoop() {
   if (gameIsRunning) {
     drawStuff();
@@ -228,9 +218,7 @@ function gameOver() {
 }
 
 
-/*
-    FUNCTION FOR CONTROLING
-  */
+/* FUNCTION FOR CONTROLING */
 //controling the snake using arrows up, down, left, right
 //this if statement prevents me to turn into opposite direction I am heading to. Wihout it this would lead the snake just turning into itself and losing the game
 function keyPush(event) {

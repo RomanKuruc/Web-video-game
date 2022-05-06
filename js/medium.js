@@ -27,9 +27,7 @@ const canvasMedium = document.querySelector("#canvas-medium");
 const titleMedium = document.querySelector("#scoreMedium");
 const med = canvasMedium.getContext("2d");
 
-/*
-    GAME
-  */
+/* GAME */
 let gameIsRunningMedium = true;
 const titleSizeMedium = 25;
 const titlecountXMedium = canvasMedium.width / titleSizeMedium;
@@ -38,30 +36,22 @@ const fpsMedium = 20;
 let currentMediumScore = 0
 let scoreMedium = 0;
 
-/*
-    PLAYER
-  */
+/* PLAYER */
 let snakeSpeedMedium = titleSizeMedium;
 let snakePosXMedium = 0;
 let snakePosYMedium = canvasMedium.height / 2;
 let velocityXMedium = 1;
 let velocityYMedium = 0;
 
-/*
-    TAIL
-  */
+/* TAIL */
 let tailMedium = [];
 let snakeLenghtMedium = 1;
 
-/*
-    FOOD
-  */
+/* FOOD */
 let foodPosXMedium = 0;
 let foodPosYMedium = 0;
 
-/*
-    LOOP
-  */
+/* LOOP */
 function gameLoopMedium() {
   if (gameIsRunningMedium) {
     drawStuffMedium();
@@ -222,13 +212,14 @@ function gameOverMedium() {
   document.getElementById("levelTwoMedium").hidden = true;
   document.getElementById("levelThreeMedium").hidden = true;
   document.getElementById("GameOverCanvas").hidden = true;
+  document.getElementById("levelOneHard").hidden = true;
+  document.getElementById("levelTwoHard").hidden = true;
+  document.getElementById("levelThreeHard").hidden = true;
 
   document.getElementById("GameOverCanvasMed").hidden = false;
 }
 
-/*
-    FUNCTION FOR CONTROLING
-  */
+/* FUNCTION FOR CONTROLING */
 //controling the snake using arrows up, down, left, right
 //this if statement prevents me to turn into opposite direction I am heading to. Wihout it this would lead the snake just turning into itself and losing the game
 function keyPushMedium(event) {
