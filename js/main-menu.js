@@ -1,75 +1,79 @@
-// DIFFICULTY
-document.getElementById("select-difficulty").addEventListener(
-    "click",
+//model
+class MainMenuModel {
+  constructor() {
+    this.visibleView = 1; //main menu is visible
+  }
+  goToSettings() {
+    this.visibleView = 2; //settigns are visible
+  }
+  goToMainMenu() {
+    this.visibleView = 1;
+  }
+  goToCredits() {
+    this.visibleView = 3; //credits are visible
+  }
+  goToControls() {
+    this.visibleView = 4; //controls are visible
+  }
+  goToDifficulty() {
+    this.visibleView = 5; //difficulty is visible
+  }
+}
+var mainMenuModel = new MainMenuModel();
 
-    function () {
-      document.getElementById("difficulty-canvas").hidden = false;
-      document.getElementById("main-menu-canvas").hidden = true;
-      document.getElementById("main-menu").hidden = true;
-      document.getElementById("settings").hidden = true;
-      document.getElementById("control").hidden = true;
-      document.getElementById("credits").hidden = true;
-      document.getElementById("select-difficulty").hidden = true;
-      document.getElementById("difficulty-back").hidden = false;
-      document.getElementById("easy").hidden = false;
-      document.getElementById("medium").hidden = false;
-      document.getElementById("hard").hidden = false;
-    },
-    false
-  );
+//controller
+var menuController = {
+  goToSettings: function () {
+    mainMenuModel.goToSettings();
+    render();
+    console.log("I am in settings");
+  },
 
-  //SETTINGS
-  document.getElementById("settings").addEventListener(
-    "click",
+  goToMainMenu: function () {
+    mainMenuModel.goToMainMenu();
+    render();
+    console.log("I am in menu");
+  },
 
-    function () {
-      document.getElementById("settings-canvas").hidden = false;
-      document.getElementById("main-menu-canvas").hidden = true;
-      document.getElementById("main-menu").hidden = true;
-      document.getElementById("settings").hidden = true;
-      document.getElementById("control").hidden = true;
-      document.getElementById("credits").hidden = true;
-      document.getElementById("select-difficulty").hidden = true;
-      document.getElementById("back-settings").hidden = false;
-      document.getElementById("icon").hidden = false;
-      document.getElementById("audio").hidden = false;
-      document.getElementById("settings-canvas-menu").hidden = true;
-    },
-    false
-  );
+  goToCredits: function () {
+    mainMenuModel.goToCredits();
+    render();
+    console.log("I am in credits");
+  },
 
-  //CONTROL
-  document.getElementById("control").addEventListener(
-    "click",
+  goToControls: function () {
+    mainMenuModel.goToControls();
+    render();
+    console.log("I am in control");
+  },
 
-    function () {
-      document.getElementById("control-canvas").hidden = false;
-      document.getElementById("main-menu-canvas").hidden = true;
-      document.getElementById("main-menu").hidden = true;
-      document.getElementById("settings").hidden = true;
-      document.getElementById("control").hidden = true;
-      document.getElementById("credits").hidden = true;
-      document.getElementById("select-difficulty").hidden = true;
-      document.getElementById("control-back").hidden = false;
-    },
-    false
-  );
+  goToDifficulty: function () {
+    mainMenuModel.goToDifficulty();
+    render();
+    console.log("I am in difficulty");
+  },
+};
 
-  document.getElementById("credits").addEventListener(
-    "click",
+function render() {
+  if (mainMenuModel.visibleView == 1) {
+    renderMainMenu();
+  } else if (mainMenuModel.visibleView == 2) {
+    renderSettings();
+  } else if (mainMenuModel.visibleView == 3) {
+    renderCredits();
+  } else if (mainMenuModel.visibleView == 4) {
+    renderControls();
+  } else if (mainMenuModel.visibleView == 5) {
+    renderDifficulty();
+  }
+}
 
-    function () {
-      document.getElementById("credits-canvas").hidden = false;
-      document.getElementById("main-menu-canvas").hidden = true;
-      document.getElementById("main-menu").hidden = true;
-      document.getElementById("settings").hidden = true;
-      document.getElementById("control").hidden = true;
-      document.getElementById("credits").hidden = true;
-      document.getElementById("select-difficulty").hidden = true;
-      document.getElementById("credits-back").hidden = false;
-    },
-    false
-  );
+function renderMainMenu() {
+  document.getElementById("difficulty-menu").style.display = "none";
+  document.getElementById("main-menu").style.display = "flex";
+  document.getElementById("settings-menu").style.display = "none";
+  document.getElementById("control-menu").style.display = "none";
+  document.getElementById("credits-menu").style.display = "none";
 
   const canvas7 = document.querySelector("#main-menu-canvas");
   var menu = canvas7.getContext("2d");
@@ -110,3 +114,142 @@ document.getElementById("select-difficulty").addEventListener(
   menu.font = "10px Comic Sans MS";
   menu.fillStyle = "black";
   menu.fillText("created by Roman Kuruc", 385, 495);
+}
+
+//rendering settings
+function renderSettings() {
+  document.getElementById("main-menu").style.display = "none";
+  document.getElementById("settings-menu").style.display = "flex";
+
+  const canvas2 = document.querySelector("#settings-canvas");
+  var settings = canvas2.getContext("2d");
+
+  settings.font = "30px Comic Sans MS";
+  settings.fillStyle = "white";
+  settings.fillRect(0, 0, canvas2.height, canvas2.width);
+  settings.fillStyle = "black";
+  settings.fillText("SETTINGS", 165, 90);
+
+  settings.font = "10px Comic Sans MS";
+  settings.fillStyle = "black";
+  settings.fillText("created by Roman Kuruc", 385, 495);
+
+  var mySong = document.getElementById("mySong");
+  var icon = document.getElementById("icon");
+
+  icon.onclick = function () {
+    if (mySong.paused) {
+      mySong.play();
+      icon.src = "../pictures, audio/sound-on.png";
+    } else {
+      mySong.pause();
+      icon.src = "../pictures, audio/sound-off.png";
+    }
+  };
+}
+
+function renderCredits() {
+  document.getElementById("main-menu").style.display = "none";
+  document.getElementById("credits-menu").style.display = "flex";
+
+  const canvas5 = document.querySelector("#credits-canvas");
+  var credits = canvas5.getContext("2d");
+
+  credits.font = "15px Comic Sans MS";
+  credits.fillStyle = "white";
+  credits.fillRect(0, 0, canvas5.height, canvas5.width);
+  credits.fillStyle = "black";
+  credits.fillText(
+    "this web game was created for my semestrial project",
+    50,
+    120
+  );
+  credits.fillText("LEAD OF DEVELOPMENT: Roman Kuruc", 50, 180);
+  credits.fillText("DEVELOPMENT: Roman Kuruc", 50, 210);
+  credits.fillText("GRAPHIC DESIGNER: Roman Kuruc", 50, 240);
+  credits.fillText("LEAD PROGRAMMER: Roman Kuruc", 50, 270);
+  credits.fillText("QA MANAGER: Roman Kuruc", 50, 300);
+  credits.fillText("AUTHOR: Roman Kuruc", 50, 330);
+
+  credits.font = "30px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText("CREDITS", 180, 70);
+
+  credits.font = "10px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText("created by Roman Kuruc", 385, 495);
+}
+
+function renderControls() {
+  document.getElementById("main-menu").style.display = "none";
+  document.getElementById("control-menu").style.display = "flex";
+
+  const canvas4 = document.querySelector("#control-canvas");
+  var credits = canvas4.getContext("2d");
+
+  credits.font = "20px Comic Sans MS";
+  credits.fillStyle = "white";
+  credits.fillRect(0, 0, canvas4.height, canvas4.width);
+  credits.fillStyle = "black";
+  credits.fillText("CONTROLING OF THE SNAKE:", 50, 120);
+  credits.font = "15px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText("UP:     Arrow UP/W", 50, 150);
+  credits.fillText("DOWN:       Arrow DOWN/S", 50, 180);
+  credits.fillText("LEFT:       Arrow LEFT/A", 50, 210);
+  credits.fillText("RIGHT:      Arrow RIGHT/D", 50, 240);
+  credits.fillText("Restart of the game:        Any key", 50, 270);
+
+  credits.font = "30px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText("CONTROL", 180, 70);
+
+  credits.font = "20px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText("WHAT'S THE MAIN GOAL OF THE GAME?", 50, 320);
+  credits.font = "15px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText(
+    "Your main objective of the game is to get as much score",
+    50,
+    340
+  );
+  credits.fillText(
+    "as you can before the timer runs out. You gain your score",
+    50,
+    360
+  );
+  credits.fillText(
+    "by eating the red thingy on the screen, meanwhile trying",
+    50,
+    380
+  );
+  credits.fillText("not to 'eat' your body. :)", 50, 400);
+
+  credits.font = "10px Comic Sans MS";
+  credits.fillStyle = "black";
+  credits.fillText("created by Roman Kuruc", 385, 495);
+}
+
+function renderDifficulty() {
+  document.getElementById("difficulty-menu").style.display = "flex";
+  document.getElementById("main-menu").style.display = "none";
+
+  const canvas3 = document.querySelector("#difficulty-canvas");
+  var difficulty = canvas3.getContext("2d");
+
+  difficulty.font = "30px Comic Sans MS ";
+  difficulty.fillStyle = "white";
+  difficulty.fillRect(0, 0, canvas3.height, canvas3.width);
+  difficulty.fillStyle = "black";
+
+  difficulty.font = "30 px Comic Sans MS";
+  difficulty.fillText("SELECT DIFFICULTY", 90, 100);
+
+  difficulty.font = "10px Comic Sans MS";
+  difficulty.fillStyle = "black";
+  difficulty.fillText("created by Roman Kuruc", 385, 495);
+}
+
+//initial render
+render();

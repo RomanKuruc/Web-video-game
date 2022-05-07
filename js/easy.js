@@ -29,6 +29,7 @@ const easy = canvas.getContext("2d");
 
 /* GAME */
 let gameIsRunning = true;
+
 const titleSize = 25;
 const titlecountX = canvas.width / titleSize;
 const titlecountY = canvas.height / titleSize;
@@ -51,7 +52,7 @@ let snakeLenght = 1;
 let foodPosX = 0;
 let foodPosY = 0;
 
-/* LOOP */
+/* GAME LOOP */
 function gameLoop() {
   if (gameIsRunning) {
     drawStuff();
@@ -85,10 +86,7 @@ function moveStuff() {
 
   //body collision
   tail.forEach((snakePart) => {
-    if (
-      snakePosX === snakePart.x &&
-      snakePosY === snakePart.y
-    ) {
+    if (snakePosX === snakePart.x && snakePosY === snakePart.y) {
       gameOver();
     }
   });
@@ -100,16 +98,13 @@ function moveStuff() {
   tail = tail.slice(-1 * snakeLenght);
 
   //food collision
-  if (
-    snakePosX == foodPosX &&
-    snakePosY == foodPosY
-  ) {
+  if (snakePosX == foodPosX && snakePosY == foodPosY) {
     score++;
     snakeLenght++;
-    currentScore = score * 2.5
+    currentScore = score * 2.5;
     title.textContent = currentScore;
 
-    if(currentScore >= 20){
+    if (currentScore >= 20) {
       document.getElementById("levelOne").hidden = true;
       document.getElementById("levelTwo").hidden = false;
       fps = 15;
@@ -126,25 +121,13 @@ function moveStuff() {
 
 //this function will draw me two rectangles
 function drawStuff() {
-  rectangle(
-    "rgb(137, 166, 105)",
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+  rectangle("rgb(137, 166, 105)", 0, 0, canvas.width, canvas.height);
 
   //this function draws me grid on canvas
   grid();
 
   //food
-  rectangle(
-    "#C7372F",
-    foodPosX,
-    foodPosY,
-    titleSize,
-    titleSize
-  );
+  rectangle("#C7372F", foodPosX, foodPosY, titleSize, titleSize);
 
   //tail
   tail.forEach((snakePart) =>
@@ -158,13 +141,7 @@ function drawStuff() {
   );
 
   //SNAAAAAAAAAAAAAAAAKE
-  rectangle(
-    "black",
-    snakePosX,
-    snakePosY,
-    titleSize,
-    titleSize
-  );
+  rectangle("black", snakePosX, snakePosY, titleSize, titleSize);
 }
 
 //DRAW RECTANGLE
@@ -173,27 +150,21 @@ function rectangle(color, x, y, width, height) {
   easy.fillRect(x, y, width, height);
 }
 
-//this function will randomly place "food" on map
+//this function will randomly place "food" on canvas
 function randomFood() {
   if (snakeLenght === titlecountX * titlecountY) {
     gameOver();
   }
 
-  foodPosX =
-    Math.floor(Math.random() * titlecountX) * titleSize;
-  foodPosY =
-    Math.floor(Math.random() * titlecountY) * titleSize;
+  foodPosX = Math.floor(Math.random() * titlecountX) * titleSize;
+  foodPosY = Math.floor(Math.random() * titlecountY) * titleSize;
 
-  if (
-    foodPosX === snakePosX &&
-    foodPosY === snakePosY
-  ) {
+  if (foodPosX === snakePosX && foodPosY === snakePosY) {
     randomFood();
   }
   if (
     tail.some(
-      (snakePart) =>
-        snakePart.x === foodPosX && snakePart.y === foodPosY
+      (snakePart) => snakePart.x === foodPosX && snakePart.y === foodPosY
     )
   ) {
     randomFood();
@@ -206,7 +177,6 @@ function gameOver() {
   title.innerHTML = `<strong>YOUR SCORE IS: ${currentScore} </strong>`;
   gameIsRunning = false;
 
-
   //this piece of code hides gameplay canvas and shows gameover canvas
   document.getElementById("levelOne").hidden = true;
   document.getElementById("levelTwo").hidden = true;
@@ -216,7 +186,6 @@ function gameOver() {
 
   document.getElementById("GameOverCanvas").hidden = false;
 }
-
 
 /* FUNCTION FOR CONTROLING */
 //controling the snake using arrows up, down, left, right
@@ -317,8 +286,4 @@ function grid() {
       );
     }
   }
-}
-
-if(document.getElementById("canvas-easy").hidden = true) {
-  !gameIsRunning;
 }

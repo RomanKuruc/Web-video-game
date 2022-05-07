@@ -316,7 +316,3 @@ function gridHard() {
     }
   }
 }
-
-if(document.getElementById("canvas-hard").hidden = true) {
-  !gameIsRunning;
-}

@@ -13,119 +13,145 @@
 
     <div class="canvaso" id="main-menu">
       <div class="FlexBox">
-        <a class="button" id="select-difficulty">SELECT DIFFICULTY</a>
-        <a class="button" id="settings">SETTINGS</a>
-        <a class="button" id="control">CONTROL</a>
-        <a class="button" id="credits">CREDITS</a>
+        <a
+          class="button"
+          id="select-difficulty"
+          onclick="menuController.goToDifficulty()"
+          >SELECT DIFFICULTY</a
+        >
+        <a class="button" id="settings" onclick="menuController.goToSettings()"
+          >SETTINGS</a
+        >
+        <a class="button" id="control" onclick="menuController.goToControls()"
+          >CONTROL</a
+        >
+        <a class="button" id="credits" onclick="menuController.goToCredits()"
+          >CREDITS</a
+        >
       </div>
       <canvas width="500" height="500" id="main-menu-canvas"></canvas>
     </div>
-    <script src="../js/main-menu.js"></script>
+    <script src="../js/main-menu.js" defer></script>
 
     <!-- DIFFICULTY -->
 
-    <div class="canvaso">
+    <div class="canvaso" id="difficulty-menu">
       <div class="FlexBox">
-        <a class="button" id="easy" hidden>EASY</a>
-        <a class="button" id="medium" hidden>MEDIUM</a>
-        <a class="button" id="hard" hidden>HARD</a>
-        <a class="button" id="difficulty-back" hidden>BACK</a>
+        <a class="button" id="easy">EASY</a>
+        <a class="button" id="medium">MEDIUM</a>
+        <a class="button" id="hard">HARD</a>
+        <a
+          class="button"
+          id="difficulty-back"
+          onclick="menuController.goToMainMenu()"
+          >BACK</a
+        >
       </div>
-      <canvas width="500" height="500" id="difficulty-canvas" hidden></canvas>
+      <canvas width="500" height="500" id="difficulty-canvas"></canvas>
     </div>
-    <body>
-      <script src="../js/difficulty.js"></script>
+    <script src="../js/difficulty.js"></script>
 
-      <!-- SETTINGS  -->
+    <!-- SETTINGS  -->
 
-      <div class="canvaso" id="settings-canvas-menu">
-        <div class="FlexBox">
-          <div class="audio">
-            <div class="right-col" id="audio" hidden>AUDIO</div>
-            <img
-              class="audio-picture"
-              src="../pictures, audio/sound-on.png"
-              id="icon"
-              hidden
-            />
-          </div>
-          <a class="button" id="back-settings" hidden>BACK</a>
+    <div class="canvaso" id="settings-menu">
+      <div class="FlexBox">
+        <div class="audio">
+          <div class="right-col" id="audio">AUDIO</div>
+          <img
+            class="audio-picture"
+            src="../pictures, audio/sound-on.png"
+            id="icon"
+          />
         </div>
-        <canvas width="500" height="500" id="settings-canvas" hidden></canvas>
+        <a
+          class="button"
+          id="back-settings"
+          onclick="menuController.goToMainMenu()"
+          >BACK</a
+        >
       </div>
-      <audio id="mySong" onloadeddata="setHalfVolume()">
-        <source src="../pictures, audio/background-song.mp3" type="audio/mp3" />
-      </audio>
-      <script src="../js/settings.js"></script>
+      <canvas width="500" height="500" id="settings-canvas"></canvas>
+    </div>
+    <audio id="mySong" onloadeddata="setHalfVolume()">
+      <source src="../pictures, audio/background-song.mp3" type="audio/mp3" />
+    </audio>
+    <script src="../js/settings.js"></script>
 
-      <!-- CONTROL -->
+    <!-- CONTROL -->
 
-      <div class="canvaso">
-        <div class="FlexBox2">
-          <a class="back" id="control-back" hidden>BACK</a>
-        </div>
-        <canvas width="500" height="500" id="control-canvas" hidden></canvas>
+    <div class="canvaso" id="control-menu">
+      <div class="FlexBox2">
+        <a
+          class="back"
+          id="control-back"
+          onclick="menuController.goToMainMenu()"
+          >BACK</a
+        >
       </div>
-      <script src="../js/control.js"></script>
+      <canvas width="500" height="500" id="control-canvas"></canvas>
+    </div>
 
-      <!-- CREDITS -->
+    <!-- CREDITS -->
 
-      <div class="canvaso">
-        <div class="FlexBox2">
-          <a class="back" id="credits-back" hidden>BACK</a>
-        </div>
-        <canvas width="500" height="500" id="credits-canvas" hidden></canvas>
+    <div class="canvaso" id="credits-menu">
+      <div class="FlexBox2">
+        <a
+          class="back"
+          id="credits-back"
+          onclick="menuController.goToMainMenu()"
+          >BACK</a
+        >
       </div>
-      <script src="../js/credits.js"></script>
+      <canvas width="500" height="500" id="credits-canvas"></canvas>
+    </div>
 
-      <!-- EASY GAME -->
-      <div>
-        <div class="level" id="levelOne" hidden>Level 1</div>
-        <div class="level" id="levelTwo" hidden>Level 2</div>
-        <div class="level" id="levelThree" hidden>Level 3</div>
-      </div>
-      <canvas id="canvas-easy" width="500" height="500" hidden></canvas>
-      <div class="score">
-        <a class="backDifficulty" id="easy-back" hidden>BACK</a>
-        <div class="mereScore" id="easy-score" hidden>Score: 0</div>
-      </div>
+    <!-- EASY GAME -->
+    <div>
+      <div class="level" id="levelOne" hidden>Level 1</div>
+      <div class="level" id="levelTwo" hidden>Level 2</div>
+      <div class="level" id="levelThree" hidden>Level 3</div>
+    </div>
+    <canvas id="canvas-easy" width="500" height="500" hidden></canvas>
+    <div class="score">
+      <a class="backDifficulty" id="easy-back" hidden>BACK</a>
+      <div class="mereScore" id="easy-score" hidden>Score: 0</div>
+    </div>
 
-      <script src="../js/easy.js"></script>
+    <script src="../js/easy.js"></script>
 
-      <!-- MEDIUM GAME -->
-      <div>
-        <div class="level" id="levelOneMedium" hidden>Level 1</div>
-        <div class="level" id="levelTwoMedium" hidden>Level 2</div>
-        <div class="level" id="levelThreeMedium" hidden>Level 3</div>
-      </div>
-      <canvas id="canvas-medium" width="500" height="500" hidden></canvas>
-      <div class="atTheBottomOfTheCanvas">
-        <a class="backDifficulty" id="medium-back" hidden>BACK</a>
-        <div class="mereScore" id="scoreMedium" hidden>Score: 0</div>
-      </div>
+    <!-- MEDIUM GAME -->
+    <div>
+      <div class="level" id="levelOneMedium" hidden>Level 1</div>
+      <div class="level" id="levelTwoMedium" hidden>Level 2</div>
+      <div class="level" id="levelThreeMedium" hidden>Level 3</div>
+    </div>
+    <canvas id="canvas-medium" width="500" height="500" hidden></canvas>
+    <div class="atTheBottomOfTheCanvas">
+      <a class="backDifficulty" id="medium-back" hidden>BACK</a>
+      <div class="mereScore" id="scoreMedium" hidden>Score: 0</div>
+    </div>
 
-      <script src="../js/medium.js"></script>
+    <script src="../js/medium.js"></script>
 
-      <!-- HARD -->
+    <!-- HARD -->
 
-      <div class="level-back-text">
-        <div class="level" id="levelOneHard" hidden>Level 1</div>
-        <div class="level" id="levelTwoHard" hidden>Level 2</div>
-        <div class="level" id="levelThreeHard" hidden>Level 3</div>
-      </div>
-      <canvas id="canvas-hard" width="500" height="500" hidden></canvas>
-      <div class="atTheBottomOfTheCanvas">
-        <a class="backDifficulty" id="hard-back" hidden>BACK</a>
-        <div class="mereScore" id="scoreHard" hidden>Score: 0</div>
-      </div>
+    <div class="level-back-text">
+      <div class="level" id="levelOneHard" hidden>Level 1</div>
+      <div class="level" id="levelTwoHard" hidden>Level 2</div>
+      <div class="level" id="levelThreeHard" hidden>Level 3</div>
+    </div>
+    <canvas id="canvas-hard" width="500" height="500" hidden></canvas>
+    <div class="atTheBottomOfTheCanvas">
+      <a class="backDifficulty" id="hard-back" hidden>BACK</a>
+      <div class="mereScore" id="scoreHard" hidden>Score: 0</div>
+    </div>
 
-      <script src="../js/hard.js"></script>
+    <script src="../js/hard.js"></script>
 
-      <!-- GAME OVER -->
-      <canvas id="GameOverCanvas" width="500" height="500" hidden></canvas>
-      <canvas id="GameOverCanvasMed" width="500" height="500" hidden></canvas>
-      <canvas id="GameOverCanvasHard" width="500" height="500" hidden></canvas>
-      <script src="../js/game-over.js"></script>
-    </body>
+    <!-- GAME OVER -->
+    <canvas id="GameOverCanvas" width="500" height="500" hidden></canvas>
+    <canvas id="GameOverCanvasMed" width="500" height="500" hidden></canvas>
+    <canvas id="GameOverCanvasHard" width="500" height="500" hidden></canvas>
+    <script src="../js/game-over.js"></script>
   </body>
 </html>

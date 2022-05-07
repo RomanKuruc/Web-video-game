@@ -320,7 +320,3 @@ function gridMedium() {
   }
 }
 
-if(document.getElementById("canvas-medium").hidden = true) {
-  !gameIsRunning;
-}
-
