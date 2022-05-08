@@ -1,73 +1,106 @@
-//model
-class MainMenuModel {
+//observer
+class Observer {
+  //I'll create an array where I store elements
   constructor() {
+    this.subscriptions = [];
+  }
+
+  //I'll pass an argument called callback which push new elements into subscription array
+  subscribe(callback) {
+    this.subscriptions.push(callback);
+  }
+
+  //this will notify every model that somethinghas changed
+  notify() {
+    //I'll loop through subscription array to check if anythinghas changed
+    this.subscriptions.forEach(function (value) {
+      //I'll invoke the function, yes I can do it
+      value();
+    });
+  }
+}
+
+//instance of the observer
+var menuModelObserver = new Observer();
+
+//model
+class MenuModel {
+  constructor(observerable) {
     this.visibleView = 1; //main menu is visible
+    this.observer = observerable;
+    this.observer.notify();
   }
   goToSettings() {
     this.visibleView = 2; //settigns are visible
+    this.observer.notify();
   }
   goToMainMenu() {
-    this.visibleView = 1;
+    this.visibleView = 1; //back to main menu
+    this.observer.notify();
   }
   goToCredits() {
     this.visibleView = 3; //credits are visible
+    this.observer.notify();
   }
   goToControls() {
     this.visibleView = 4; //controls are visible
+    this.observer.notify();
   }
   goToDifficulty() {
     this.visibleView = 5; //difficulty is visible
+    this.observer.notify();
   }
 }
-var mainMenuModel = new MainMenuModel();
+var menuModel = new MenuModel(menuModelObserver);
 
 //controller
+//if anything has changed this will notife me in console about it
 var menuController = {
   goToSettings: function () {
-    mainMenuModel.goToSettings();
-    render();
+    menuModel.goToSettings();
     console.log("I am in settings");
   },
 
   goToMainMenu: function () {
-    mainMenuModel.goToMainMenu();
-    render();
+    menuModel.goToMainMenu();
     console.log("I am in menu");
   },
 
   goToCredits: function () {
-    mainMenuModel.goToCredits();
-    render();
+    menuModel.goToCredits();
     console.log("I am in credits");
   },
 
   goToControls: function () {
-    mainMenuModel.goToControls();
-    render();
+    menuModel.goToControls();
     console.log("I am in control");
   },
 
   goToDifficulty: function () {
-    mainMenuModel.goToDifficulty();
-    render();
+    menuModel.goToDifficulty();
     console.log("I am in difficulty");
   },
 };
 
+//here I assign value for each render
 function render() {
-  if (mainMenuModel.visibleView == 1) {
+  if (menuModel.visibleView == 1) {
     renderMainMenu();
-  } else if (mainMenuModel.visibleView == 2) {
+  } else if (menuModel.visibleView == 2) {
     renderSettings();
-  } else if (mainMenuModel.visibleView == 3) {
+  } else if (menuModel.visibleView == 3) {
     renderCredits();
-  } else if (mainMenuModel.visibleView == 4) {
+  } else if (menuModel.visibleView == 4) {
     renderControls();
-  } else if (mainMenuModel.visibleView == 5) {
+  } else if (menuModel.visibleView == 5) {
     renderDifficulty();
   }
 }
 
+//here I call the subscribed render
+menuModelObserver.subscribe(render);
+
+//rendering main menu
 function renderMainMenu() {
   document.getElementById("difficulty-menu").style.display = "none";
   document.getElementById("main-menu").style.display = "flex";
@@ -148,6 +181,7 @@ function renderSettings() {
   };
 }
 
+//rendering credits
 function renderCredits() {
   document.getElementById("main-menu").style.display = "none";
   document.getElementById("credits-menu").style.display = "flex";
@@ -180,6 +214,7 @@ function renderCredits() {
   credits.fillText("created by Roman Kuruc", 385, 495);
 }
 
+//rendering controls
 function renderControls() {
   document.getElementById("main-menu").style.display = "none";
   document.getElementById("control-menu").style.display = "flex";
@@ -231,6 +266,7 @@ function renderControls() {
   credits.fillText("created by Roman Kuruc", 385, 495);
 }
 
+//rendering difficulty
 function renderDifficulty() {
   document.getElementById("difficulty-menu").style.display = "flex";
   document.getElementById("main-menu").style.display = "none";
@@ -250,6 +286,5 @@ function renderDifficulty() {
   difficulty.fillStyle = "black";
   difficulty.fillText("created by Roman Kuruc", 385, 495);
 }
-
 //initial render
 render();
