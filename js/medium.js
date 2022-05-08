@@ -21,36 +21,6 @@ document.getElementById("medium-back").addEventListener(
   false
 );
 
-
-document.addEventListener("keydown", keyPushMedium);
-const canvasMedium = document.querySelector("#canvas-medium");
-const titleMedium = document.querySelector("#scoreMedium");
-const med = canvasMedium.getContext("2d");
-
-/* GAME */
-let gameIsRunningMedium = true;
-const titleSizeMedium = 25;
-const titlecountXMedium = canvasMedium.width / titleSizeMedium;
-const titlecountYMedium = canvasMedium.height / titleSizeMedium;
-const fpsMedium = 20;
-let currentMediumScore = 0
-let scoreMedium = 0;
-
-/* PLAYER */
-let snakeSpeedMedium = titleSizeMedium;
-let snakePosXMedium = 0;
-let snakePosYMedium = canvasMedium.height / 2;
-let velocityXMedium = 1;
-let velocityYMedium = 0;
-
-/* TAIL */
-let tailMedium = [];
-let snakeLenghtMedium = 1;
-
-/* FOOD */
-let foodPosXMedium = 0;
-let foodPosYMedium = 0;
-
 /* LOOP */
 function gameLoopMedium() {
   if (gameIsRunningMedium) {
@@ -85,10 +55,7 @@ function moveStuffMedium() {
 
   //body collision
   tailMedium.forEach((snakePart) => {
-    if (
-      snakePosXMedium === snakePart.x &&
-      snakePosYMedium === snakePart.y
-    ) {
+    if (snakePosXMedium === snakePart.x && snakePosYMedium === snakePart.y) {
       gameOverMedium();
     }
   });
@@ -100,15 +67,12 @@ function moveStuffMedium() {
   tailMedium = tailMedium.slice(-1 * snakeLenghtMedium);
 
   //food collision
-  if (
-    snakePosXMedium == foodPosXMedium &&
-    snakePosYMedium == foodPosYMedium
-  ) {
+  if (snakePosXMedium == foodPosXMedium && snakePosYMedium == foodPosYMedium) {
     scoreMedium++;
     snakeLenghtMedium++;
     currentMediumScore = scoreMedium * 5;
     titleMedium.textContent = currentMediumScore;
-    if(currentMediumScore >= 40){
+    if (currentMediumScore >= 40) {
       document.getElementById("levelOneMedium").hidden = true;
       document.getElementById("levelTwoMedium").hidden = false;
       fps = 25;
@@ -121,55 +85,6 @@ function moveStuffMedium() {
     }
     randomFoodMedium();
   }
-}
-
-//this function will draw me two rectangles
-function drawStuffMedium() {
-  rectangleMedium(
-    "rgb(137, 166, 105)",
-    0,
-    0,
-    canvasMedium.width,
-    canvasMedium.height
-  );
-
-  //this function draws me grid on canvas
-  gridMedium();
-
-  //food
-  rectangleMedium(
-    "#C7372F",
-    foodPosXMedium,
-    foodPosYMedium,
-    titleSizeMedium,
-    titleSizeMedium
-  );
-
-  //tail
-  tailMedium.forEach((snakePart) =>
-    rectangleMedium(
-      "rgb(127, 0, 255)",
-      snakePart.x,
-      snakePart.y,
-      titleSizeMedium,
-      titleSizeMedium
-    )
-  );
-
-  //SNAAAAAAAAAAAAAAAAKE
-  rectangleMedium(
-    "black",
-    snakePosXMedium,
-    snakePosYMedium,
-    titleSizeMedium,
-    titleSizeMedium
-  );
-}
-
-//DRAW RECTANGLE
-function rectangleMedium(color, x, y, width, height) {
-  med.fillStyle = color;
-  med.fillRect(x, y, width, height);
 }
 
 //this function will randomly place "food" on map
@@ -218,105 +133,3 @@ function gameOverMedium() {
 
   document.getElementById("GameOverCanvasMed").hidden = false;
 }
-
-/* FUNCTION FOR CONTROLING */
-//controling the snake using arrows up, down, left, right
-//this if statement prevents me to turn into opposite direction I am heading to. Wihout it this would lead the snake just turning into itself and losing the game
-function keyPushMedium(event) {
-  switch (event.key) {
-    case "ArrowLeft":
-      if (velocityXMedium !== 1) {
-        velocityXMedium = -1;
-        velocityYMedium = 0;
-      }
-      break;
-    case "ArrowUp":
-      if (velocityYMedium !== 1) {
-        velocityXMedium = 0;
-        velocityYMedium = -1;
-      }
-      break;
-    case "ArrowRight":
-      if (velocityXMedium !== -1) {
-        velocityXMedium = 1;
-        velocityYMedium = 0;
-      }
-      break;
-    case "ArrowDown":
-      if (velocityYMedium !== -1) {
-        velocityXMedium = 0;
-        velocityYMedium = 1;
-      }
-      break;
-    case "A":
-      if (velocityXMedium !== 1) {
-        velocityXMedium = -1;
-        velocityYMedium = 0;
-      }
-      break;
-    case "W":
-      if (velocityYMedium !== 1) {
-        velocityXMedium = 0;
-        velocityYMedium = -1;
-      }
-      break;
-    case "D":
-      if (velocityXMedium !== -1) {
-        velocityXMedium = 1;
-        velocityYMedium = 0;
-      }
-      break;
-    case "S":
-      if (velocityYMedium !== -1) {
-        velocityXMedium = 0;
-        velocityYMedium = 1;
-      }
-      break;
-    case "a":
-      if (velocityXMedium !== 1) {
-        velocityXMedium = -1;
-        velocityYMedium = 0;
-      }
-      break;
-    case "w":
-      if (velocityYMedium !== 1) {
-        velocityXMedium = 0;
-        velocityYMedium = -1;
-      }
-      break;
-    case "d":
-      if (velocityXMedium !== -1) {
-        velocityXMedium = 1;
-        velocityYMedium = 0;
-      }
-      break;
-    case "s":
-      if (velocityYMedium !== -1) {
-        velocityXMedium = 0;
-        velocityYMedium = 1;
-      }
-      break;
-    default:
-      // restart game
-      if (!gameIsRunningMedium) location.reload();
-      break;
-  }
-}
-
-function gridMedium() {
-  //this first for cycle draws me the width of the grid
-  for (let i = 0; i < titlecountXMedium; i++) {
-    //while this second one draws me the height of the grid
-    //using canvas.height/width and dividing by i get the same grid size as my snake.
-    for (let j = 0; j < titlecountYMedium; j++) {
-      rectangleMedium(
-        "white",
-        titleSizeMedium * i,
-        titleSizeMedium * j,
-        titleSizeMedium - 1,
-        titleSizeMedium - 1
-      );
-    }
-  }
-}
-

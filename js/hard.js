@@ -22,35 +22,6 @@ document.getElementById("hard-back").addEventListener(
   false
 );
 
-document.addEventListener("keydown", keyPushHard);
-const canvasHard = document.querySelector("#canvas-hard");
-const titleHard = document.querySelector("#scoreHard");
-const hard = canvasHard.getContext("2d");
-
-/* GAME */
-let gameIsRunningHard = true;
-const titleSizeHard = 25;
-const titlecountXHard = canvasHard.width / titleSizeHard;
-const titlecountYHard = canvasHard.height / titleSizeHard;
-const fpsHard = 30;
-let currentHardScore = 0;
-let scoreHard = 0;
-
-/* PLAYER */
-let snakeSpeedHard = titleSizeHard;
-let snakePosXHard = 0;
-let snakePosYHard = canvasHard.height / 2;
-let velocityXHard = 1;
-let velocityYHard = 0;
-
-/* TAIL */
-let tailHard = [];
-let snakeLenghtHard = 1;
-
-/* FOOD */
-let foodPosXHard = 0;
-let foodPosYHard = 0;
-
 /* LOOP */
 function gameLoopHard() {
   if (gameIsRunningHard) {
@@ -85,10 +56,7 @@ function moveStuffHard() {
 
   //body collision
   tailHard.forEach((snakePart) => {
-    if (
-      snakePosXHard === snakePart.x &&
-      snakePosYHard === snakePart.y
-    ) {
+    if (snakePosXHard === snakePart.x && snakePosYHard === snakePart.y) {
       gameOverHard();
     }
   });
@@ -100,16 +68,13 @@ function moveStuffHard() {
   tailHard = tailHard.slice(-1 * snakeLenghtHard);
 
   //food collision
-  if (
-    snakePosXHard == foodPosXHard &&
-    snakePosYHard == foodPosYHard
-  ) {
+  if (snakePosXHard == foodPosXHard && snakePosYHard == foodPosYHard) {
     scoreHard++;
     snakeLenghtHard++;
     currentHardScore = scoreHard * 10;
     titleHard.textContent = currentHardScore;
 
-    if(currentHardScore >= 80){
+    if (currentHardScore >= 80) {
       document.getElementById("levelOneHard").hidden = true;
       document.getElementById("levelTwoHard").hidden = false;
       fps = 35;
@@ -124,70 +89,16 @@ function moveStuffHard() {
   }
 }
 
-//this function will draw me two rectangles
-function drawStuffHard() {
-  rectangleHard(
-    "rgb(137, 166, 105)",
-    0,
-    0,
-    canvasHard.width,
-    canvasHard.height
-  );
-
-  //this function draws me grid on canvas
-  gridHard();
-
-  //food
-  rectangleHard(
-    "#C7372F",
-    foodPosXHard,
-    foodPosYHard,
-    titleSizeHard,
-    titleSizeHard
-  );
-
-  //tail
-  tailHard.forEach((snakePart) =>
-    rectangleHard(
-      "rgb(127, 0, 255)",
-      snakePart.x,
-      snakePart.y,
-      titleSizeHard,
-      titleSizeHard
-    )
-  );
-
-  //SNAAAAAAAAAAAAAAAAKE
-  rectangleHard(
-    "black",
-    snakePosXHard,
-    snakePosYHard,
-    titleSizeHard,
-    titleSizeHard
-  );
-}
-
-//DRAW RECTANGLE
-function rectangleHard(color, x, y, width, height) {
-  hard.fillStyle = color;
-  hard.fillRect(x, y, width, height);
-}
-
 //this function will randomly place "food" on map
 function randomFoodHard() {
   if (snakeLenghtHard === titlecountXHard * titlecountYHard) {
     gameOverHard();
   }
 
-  foodPosXHard =
-    Math.floor(Math.random() * titlecountXHard) * titleSizeHard;
-  foodPosYHard =
-    Math.floor(Math.random() * titlecountYHard) * titleSizeHard;
+  foodPosXHard = Math.floor(Math.random() * titlecountXHard) * titleSizeHard;
+  foodPosYHard = Math.floor(Math.random() * titlecountYHard) * titleSizeHard;
 
-  if (
-    foodPosXHard === snakePosXHard &&
-    foodPosYHard === snakePosYHard
-  ) {
+  if (foodPosXHard === snakePosXHard && foodPosYHard === snakePosYHard) {
     randomFoodHard();
   }
   if (
@@ -214,105 +125,4 @@ function gameOverHard() {
   document.getElementById("GameOverCanvas").hidden = true;
 
   document.getElementById("GameOverCanvasHard").hidden = false;
-}
-
-/* FUNCTION FOR CONTROLING */
-//controling the snake using arrows up, down, left, right
-//this if statement prevents me to turn into opposite direction I am heading to. Wihout it this would lead the snake just turning into itself and losing the game
-function keyPushHard(event) {
-  switch (event.key) {
-    case "ArrowLeft":
-      if (velocityXHard !== 1) {
-        velocityXHard = -1;
-        velocityYHard = 0;
-      }
-      break;
-    case "ArrowUp":
-      if (velocityYHard !== 1) {
-        velocityXHard = 0;
-        velocityYHard = -1;
-      }
-      break;
-    case "ArrowRight":
-      if (velocityXHard !== -1) {
-        velocityXHard = 1;
-        velocityYHard = 0;
-      }
-      break;
-    case "ArrowDown":
-      if (velocityYHard !== -1) {
-        velocityXHard = 0;
-        velocityYHard = 1;
-      }
-      break;
-    case "A":
-      if (velocityXHard !== 1) {
-        velocityXHard = -1;
-        velocityYHard = 0;
-      }
-      break;
-    case "W":
-      if (velocityYHard !== 1) {
-        velocityXHard = 0;
-        velocityYHard = -1;
-      }
-      break;
-    case "D":
-      if (velocityXHard !== -1) {
-        velocityXHard = 1;
-        velocityYHard = 0;
-      }
-      break;
-    case "S":
-      if (velocityYHard !== -1) {
-        velocityXHard = 0;
-        velocityYHard = 1;
-      }
-      break;
-    case "a":
-      if (velocityXHard !== 1) {
-        velocityXHard = -1;
-        velocityYHard = 0;
-      }
-      break;
-    case "w":
-      if (velocityYHard !== 1) {
-        velocityXHard = 0;
-        velocityYHard = -1;
-      }
-      break;
-    case "d":
-      if (velocityXHard !== -1) {
-        velocityXHard = 1;
-        velocityYHard = 0;
-      }
-      break;
-    case "s":
-      if (velocityYHard !== -1) {
-        velocityXHard = 0;
-        velocityYHard = 1;
-      }
-      break;
-    default:
-      // restart game
-      if (!gameIsRunningHard) location.reload();
-      break;
-  }
-}
-
-function gridHard() {
-  //this first for cycle draws me the width of the grid
-  for (let i = 0; i < titlecountXHard; i++) {
-    //while this second one draws me the height of the grid
-    //using canvas.height/width and dividing by i get the same grid size as my snake.
-    for (let j = 0; j < titlecountYHard; j++) {
-      rectangleHard(
-        "white",
-        titleSizeHard * i,
-        titleSizeHard * j,
-        titleSizeHard - 1,
-        titleSizeHard - 1
-      );
-    }
-  }
 }

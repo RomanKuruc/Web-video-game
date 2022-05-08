@@ -22,36 +22,6 @@ document.getElementById("easy-back").addEventListener(
   false
 );
 
-document.addEventListener("keydown", keyPush);
-const canvas = document.querySelector("#canvas-easy");
-const title = document.querySelector("#easy-score");
-const easy = canvas.getContext("2d");
-
-/* GAME */
-let gameIsRunning = true;
-
-const titleSize = 25;
-const titlecountX = canvas.width / titleSize;
-const titlecountY = canvas.height / titleSize;
-let score = 0;
-let currentScore = 0;
-let fps = 10;
-
-/* PLAYER */
-let snakeSpeed = titleSize;
-let snakePosX = 0;
-let snakePosY = canvas.height / 2;
-let velocityX = 1;
-let velocityY = 0;
-
-/* TAIL */
-let tail = [];
-let snakeLenght = 1;
-
-/* FOOD */
-let foodPosX = 0;
-let foodPosY = 0;
-
 /* GAME LOOP */
 function gameLoop() {
   if (gameIsRunning) {
@@ -119,37 +89,6 @@ function moveStuff() {
   }
 }
 
-//this function will draw me two rectangles
-function drawStuff() {
-  rectangle("rgb(137, 166, 105)", 0, 0, canvas.width, canvas.height);
-
-  //this function draws me grid on canvas
-  grid();
-
-  //food
-  rectangle("#C7372F", foodPosX, foodPosY, titleSize, titleSize);
-
-  //tail
-  tail.forEach((snakePart) =>
-    rectangle(
-      "rgb(127, 0, 255)",
-      snakePart.x,
-      snakePart.y,
-      titleSize,
-      titleSize
-    )
-  );
-
-  //SNAAAAAAAAAAAAAAAAKE
-  rectangle("black", snakePosX, snakePosY, titleSize, titleSize);
-}
-
-//DRAW RECTANGLE
-function rectangle(color, x, y, width, height) {
-  easy.fillStyle = color;
-  easy.fillRect(x, y, width, height);
-}
-
 //this function will randomly place "food" on canvas
 function randomFood() {
   if (snakeLenght === titlecountX * titlecountY) {
@@ -185,105 +124,4 @@ function gameOver() {
   document.getElementById("easy-score").hidden = false;
 
   document.getElementById("GameOverCanvas").hidden = false;
-}
-
-/* FUNCTION FOR CONTROLING */
-//controling the snake using arrows up, down, left, right
-//this if statement prevents me to turn into opposite direction I am heading to. Wihout it this would lead the snake just turning into itself and losing the game
-function keyPush(event) {
-  switch (event.key) {
-    case "ArrowLeft":
-      if (velocityX !== 1) {
-        velocityX = -1;
-        velocityY = 0;
-      }
-      break;
-    case "ArrowUp":
-      if (velocityY !== 1) {
-        velocityX = 0;
-        velocityY = -1;
-      }
-      break;
-    case "ArrowRight":
-      if (velocityX !== -1) {
-        velocityX = 1;
-        velocityY = 0;
-      }
-      break;
-    case "ArrowDown":
-      if (velocityY !== -1) {
-        velocityX = 0;
-        velocityY = 1;
-      }
-      break;
-    case "A":
-      if (velocityX !== 1) {
-        velocityX = -1;
-        velocityY = 0;
-      }
-      break;
-    case "W":
-      if (velocityY !== 1) {
-        velocityX = 0;
-        velocityY = -1;
-      }
-      break;
-    case "D":
-      if (velocityX !== -1) {
-        velocityX = 1;
-        velocityY = 0;
-      }
-      break;
-    case "S":
-      if (velocityY !== -1) {
-        velocityX = 0;
-        velocityY = 1;
-      }
-      break;
-    case "a":
-      if (velocityX !== 1) {
-        velocityX = -1;
-        velocityY = 0;
-      }
-      break;
-    case "w":
-      if (velocityY !== 1) {
-        velocityX = 0;
-        velocityY = -1;
-      }
-      break;
-    case "d":
-      if (velocityX !== -1) {
-        velocityX = 1;
-        velocityY = 0;
-      }
-      break;
-    case "s":
-      if (velocityY !== -1) {
-        velocityX = 0;
-        velocityY = 1;
-      }
-      break;
-    default:
-      // restart game
-      if (!gameIsRunning) location.reload();
-      break;
-  }
-}
-
-function grid() {
-  //this first for cycle draws me the width of the grid
-  for (let i = 0; i < titlecountX; i++) {
-    //while this second one draws me the height of the grid
-    //using canvas.height/width and dividing by i get the same grid size as my snake.
-    for (let j = 0; j < titlecountY; j++) {
-      rectangle(
-        "white",
-        titleSize * i,
-        titleSize * j,
-        titleSize - 1,
-        titleSize - 1
-      );
-    }
-  }
 }
