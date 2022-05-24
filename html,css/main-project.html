@@ -5,8 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
-    <script></script>
+
+    <!-- TITLE -->
     <title>web-game</title>
+
+    <!-- SCRIPTS -->
+    <script src="../js/main-menu.js" defer></script>
+    <script src="../js/difficulty.js" defer></script>
+    <script src="../js/settings.js" defer></script>
+
+    <script src="../js/initialEasy.js" defer></script>
+    <script src="../js/modelsEasy.js" defer></script>
+    <script src="../js/easy.js" defer></script>
+    <script src="../js/controlEasy.js" defer></script>
+
+    <script src="../js/initialMedium.js" defer></script>
+    <script src="../js/modelsMedium.js" defer></script>
+    <script src="../js/medium.js" defer></script>
+    <script src="../js/controlMedium.js" defer></script>
+
+    <script src="../js/initialHard.js" defer></script>
+    <script src="../js/modelsHard.js" defer></script>
+    <script src="../js/hard.js" defer></script>
+    <script src="../js/controlHard.js" defer></script>
+
+    <script src="../js/game-over.js" defer></script>
   </head>
   <body>
     <!-- MAIN MENU -->
@@ -31,7 +54,6 @@
       </div>
       <canvas width="500" height="500" id="main-menu-canvas"></canvas>
     </div>
-    <script src="../js/main-menu.js" defer></script>
 
     <!-- DIFFICULTY -->
 
@@ -49,7 +71,6 @@
       </div>
       <canvas width="500" height="500" id="difficulty-canvas"></canvas>
     </div>
-    <script src="../js/difficulty.js"></script>
 
     <!-- SETTINGS  -->
 
@@ -75,7 +96,6 @@
     <audio id="mySong" onloadeddata="setHalfVolume()">
       <source src="../pictures, audio/background-song.mp3" type="audio/mp3" />
     </audio>
-    <script src="../js/settings.js"></script>
 
     <!-- CONTROL -->
 
@@ -117,8 +137,6 @@
       <div class="mereScore" id="easy-score" hidden>Score: 0</div>
     </div>
 
-    <script src="../js/easy.js"></script>
-
     <!-- MEDIUM GAME -->
     <div>
       <div class="level" id="levelOneMedium" hidden>Level 1</div>
@@ -130,8 +148,6 @@
       <a class="backDifficulty" id="medium-back" hidden>BACK</a>
       <div class="mereScore" id="scoreMedium" hidden>Score: 0</div>
     </div>
-
-    <script src="../js/medium.js"></script>
 
     <!-- HARD -->
 
@@ -146,12 +162,9 @@
       <div class="mereScore" id="scoreHard" hidden>Score: 0</div>
     </div>
 
-    <script src="../js/hard.js"></script>
-
     <!-- GAME OVER -->
     <canvas id="GameOverCanvas" width="500" height="500" hidden></canvas>
     <canvas id="GameOverCanvasMed" width="500" height="500" hidden></canvas>
     <canvas id="GameOverCanvasHard" width="500" height="500" hidden></canvas>
-    <script src="../js/game-over.js"></script>
   </body>
 </html>
