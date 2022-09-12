@@ -1,1 +1,1 @@
-this project was created for my semstrial assignment
+this video game was created for my semestrial assignment
